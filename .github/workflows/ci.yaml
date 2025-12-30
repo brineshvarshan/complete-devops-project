@@ -32,7 +32,7 @@ jobs:
       - name: Push to Dockerhub
         run: |
           docker push brinesh/complete-devops-project:${{ env.SHORT_SHA }}
-      
+
       - name: Configure Git Author
         run: |
           git config --local user.email "brineshvarshan28@gmail.com"
@@ -42,5 +42,6 @@ jobs:
         run: |
           sed -i "s/tag:.*/tag: ${{ env.SHORT_SHA }}/" ./complete-devops-project-time-printer/values.yaml
           git add ./complete-devops-project-time-printer/values.yaml
-          git commit -m "Updated image tag to ${{ env.SHORT_SHA }}"
-          git push
+          git commit -m "Updated image tag to ${{ env.SHORT_SHA }}" || echo "No changes to commit"
+          git pull origin main --rebase
+          git push origin main
