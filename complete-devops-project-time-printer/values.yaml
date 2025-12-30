@@ -1,6 +1,6 @@
 image:
   repository: brinesh/complete-devops-project   
-  tag: 0399eb5
+  tag: 98ead8d
   pullPolicy: IfNotPresent
 
 service:
